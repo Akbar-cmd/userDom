@@ -1,0 +1,7 @@
+env: "local"
+db_dsn: "host=db user=user dbname=userdb password=12345 sslmode=disable"
+token: "/2+XnmJGz1j3ehIVI/5P9kl+CghrE3DcS7rnT+qar5w="
+token_ttl: 1h
+grpc:
+  port: 50051
+  timeout: 10h
