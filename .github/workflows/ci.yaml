@@ -1,11 +1,10 @@
-name: CI
+name: Deploy Docker Compose via SSH
 
 on:
   push:
-    branches: [ main, dev ]
+    branches: [main]  # Trigger on push to main branch
   pull_request:
-    branches: [ main, dev ]
-
+    branches: [main]
 
 jobs:
   deploy:
@@ -29,5 +28,4 @@ jobs:
 
       - name: Deploy with docker-compose
         run: |
-          docker compose -f docker-compose.yml up -d
-
+          docker compose -f deployments/docker-compose.yml up -d
