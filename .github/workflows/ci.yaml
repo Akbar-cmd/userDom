@@ -62,13 +62,13 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSHKEY }}
-          envs: IMAGE_NAME,REGISTRY,GITHUB_SHA,CONTAINER_NAME
+          envs: IMAGE_NAME_HTTP,REGISTRY,GITHUB_SHA,CONTAINER_NAME
           script: |
             cd ${{ env.SSH_DIR }}
             TAG_NAME=$(echo $GITHUB_SHA | head -c7)
             
             # Обновляем образ в docker-compose.yml
-            sed -i "s|image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:.*|image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:$TAG_NAME|g" docker-compose.yml
+            sed -i "s|image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_HTTP }}:.*|image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_HTTP }}:$TAG_NAME|g" docker-compose.yml
             
             # Создаем сеть 
             docker network create grpc-network >/dev/null 2>&1 || true
