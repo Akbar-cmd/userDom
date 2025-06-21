@@ -36,7 +36,7 @@ services:
       context: .
       dockerfile: Dockerfile
 
-    image: docker.io/akbae/ci:latest
+    image: docker.io/akbae/ci-http:latest
 
     ports:
       - "8080:8080"
