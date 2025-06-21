@@ -86,8 +86,9 @@ jobs:
             docker login -u ${{ secrets.REGISTRY_USERNAME }} -p ${{ secrets.REGISTRY_PASSWORD }} ${{ env.REGISTRY }}
             
             # Получаем новые образы и перезапускаем сервисы
+            docker compose --project-name ${{ env.COMPOSE_PROJECT_NAME }} down http-server
             docker compose --project-name ${{ env.COMPOSE_PROJECT_NAME }} pull http-server
-            docker compose --project-name ${{ env.COMPOSE_PROJECT_NAME }} up -d --force-recreate http-server
+            docker compose --project-name ${{ env.COMPOSE_PROJECT_NAME }} up -d --build http-server
             
             # Проверяем статус
             sleep 10
