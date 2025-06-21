@@ -1,4 +1,4 @@
-name: Deploy Docker Compose via SSH
+name: Dууploy Docker Compose via SSH
 
 on:
   push:
