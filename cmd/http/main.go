@@ -124,6 +124,10 @@ func App() (*gin.Engine, error) {
 	// create gin router
 	r := gin.Default()
 
+	// Добавляем Prometheus middleware
+	p := ginprometheus.NewPrometheus("gin")
+	p.Use(router)
+
 	router.GET("/metrics", gin.WrapH(promhttp.Handler()))
 
 	// Deps
