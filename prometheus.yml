@@ -6,16 +6,12 @@ rule_files:
   - "alerts.yml"
 
 scrape_configs:
-  - job_name: "prometheus"
-    static_configs:
-      - targets: [ "http-server:9090" ]
-
   - job_name : "user_app"
     static_configs:
       - targets: [ "http-server:8080" ]
 
   - job_name: "bike_domain"
     static_configs:
-        - targets: [ "http-server:8080" ]
+        - targets: [ "http-server:9091" ]
 
 
