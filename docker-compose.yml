@@ -7,7 +7,7 @@ volumes:
 
 networks:
   grpc-network:
-    driver: bridge
+    external: true
 
 services:
   db:
