@@ -124,6 +124,8 @@ func App() (*gin.Engine, error) {
 	// create gin router
 	r := gin.Default()
 
+	router.GET("/metrics", gin.WrapH(promhttp.Handler()))
+
 	// Deps
 	auth.NewAuthHandler(r, auth.AuthHandlerDeps{
 		Config:      cfg,
