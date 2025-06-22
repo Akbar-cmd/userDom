@@ -17,7 +17,6 @@ import (
 	"userDomain/internal/user"
 	desc "userDomain/pkg/gRPC"
 	"userDomain/pkg/storage/postgres"
-	"github.com/zsais/go-gin-prometheus"
 )
 
 const (
@@ -124,11 +123,6 @@ func App() (*gin.Engine, error) {
 
 	// create gin router
 	r := gin.Default()
-
-	p := ginprometheus.NewPrometheus("gin")
-	p.Use(r)
-
-	r.GET("/metrics", gin.WrapH(promhttp.Handler()))
 
 	// Deps
 	auth.NewAuthHandler(r, auth.AuthHandlerDeps{
